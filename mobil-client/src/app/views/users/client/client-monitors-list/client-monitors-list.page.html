@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="disp-flex">
+      <ion-buttons slot="start">
+        <ion-menu-button class="color-black"></ion-menu-button>
+      </ion-buttons>
+      <p class="black-24 fw-600">Monitores del cliente</p>
+      <img src="/assets/images/logo-img.svg">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let monitor of actualMonitors">
+          <ion-row>
+            <ion-col size="8">
+              <ion-row>
+                <ion-label>
+                  {{monitor.fullName}}
+                </ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-label>
+                  {{monitor.email}}
+                </ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-label>
+                  {{monitor.phone}}
+                </ion-label>
+              </ion-row>
+              
+            </ion-col>
+            <ion-col size="2">
+              <ion-button href="tel:{{monitor.phone}}">
+                <ion-icon name="call-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="2">
+              <ion-button href="mailto:{{monitor.email}}">
+                <ion-icon name="mail-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+    </ion-item>
+  </ion-list>
+</ion-content>

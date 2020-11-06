@@ -1,0 +1,63 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu menuId="main-content" contentId="main-content" type="overlay">
+      <ion-content class="side-menu-content">
+        <ion-grid class="p-0">
+          <ion-row class="head-box m-b-10">
+            <ion-button class="large-btn">
+              <div class="btn-box">
+                <div>
+                  <img src="./assets/images/user-white.svg">
+                </div>
+                <div class="p-l-5">
+                  <p class="white-18 fw-800">Mi cuenta</p>
+                  <p class="white-16">{{dataSessionService.user.fullName}}</p>
+                  <p class="white-14">{{dataSessionService.user.email}}</p>
+                  <p class="white-14">Código : {{dataSessionService.user.idUser}}</p>
+                </div>
+              </div>
+            </ion-button>
+          </ion-row>
+        </ion-grid>
+        
+        <ion-list id="inbox-list">
+          <!-- feat/presentacion codigo pór ver -->
+         <!--  <ion-list-header>Vesvir</ion-list-header>
+          <ion-note>{{dataSessionService.user.email}}</ion-note> -->
+        
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item *ngIf="dataSessionService.user.userType == p.type" (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          
+          <!-- 
+          <ion-item-divider>
+            <ion-menu-toggle auto-hide="false" >
+              <ion-item (click)="logOut()" routerDirection="root"  lines="none" detail="false" >
+                <ion-icon name="exit-outline"></ion-icon>
+                <ion-label>Cerrar sesión</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-item-divider> -->
+          
+        </ion-list>
+
+        <!--<ion-list id="labels-list">
+          <ion-list-header>Labels</ion-list-header>
+
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list>-->
+        <ion-button (click)="logOut()" class="logout-btn">
+          Cerrar sesión
+          <ion-icon name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

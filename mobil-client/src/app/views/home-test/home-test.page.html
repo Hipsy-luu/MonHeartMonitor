@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="disp-flex">
+      <ion-buttons slot="start">
+        <ion-menu-button class="color-black"></ion-menu-button>
+      </ion-buttons>
+      <p class="black-24 fw-600">Home Test Graphs</p>
+      <img src="/assets/images/logo-img.svg">
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="white-card">
+    <ion-grid >
+      <!-- Ejemplo de informacion de hombres mujeres -->
+      <ion-row>Añadir nuevo usuario Mujer</ion-row>
+      <ion-row style="text-align: center;">
+        <ion-col>
+          <ion-button (click)="numWomens > 0 ? numWomens = numWomens - 1 : numWomens">-</ion-button>
+        </ion-col>
+        <ion-col>
+          Edad: 
+          {{numWomens}}
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="numWomens = numWomens + 1">+</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="numWomens = numWomens">Añadir</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>Añadir nuevo usuario Hombre</ion-row>
+      <ion-row style="text-align: center;">
+        <ion-col>
+          <ion-button (click)="numMens > 0 ? numMens = numMens - 1 : numMens">-</ion-button>
+        </ion-col>
+        <ion-col >
+          Edad:
+          {{numMens}}
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="numMens = numMens + 1">+</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="numWomens = numWomens">Añadir</ion-button>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row align-items-start>
+        <ion-col >
+          ss
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+  <div class="blue-bottom-box"></div>
+</ion-content>

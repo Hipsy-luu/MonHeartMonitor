@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="disp-flex">
+      <ion-buttons slot="start">
+        <ion-menu-button class="color-black"></ion-menu-button>
+      </ion-buttons>
+      <p class="black-24 fw-600">Home Test Cliente</p>
+      <img src="/assets/images/logo-img.svg">
+      <ion-button (click)="dataSessionService.navigateByUrl('/client-monitors-list')">
+        mon
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-label>
+    peso : {{actualPatient.weight}}
+    estatura : {{actualPatient.height}}
+
+    Indice de masa corporal o IMC : 56
+    sexo : 
+    <span *ngIf="actualPatient.genre == 0">
+      mujer
+    </span>
+    <span *ngIf="actualPatient.genre == 1">
+      hombre
+    </span>
+
+    bpm : 52
+    edad :
+    {{utilitiesService.edad(actualPatient.birthDay)}}
+    
+  </ion-label>
+</ion-content>

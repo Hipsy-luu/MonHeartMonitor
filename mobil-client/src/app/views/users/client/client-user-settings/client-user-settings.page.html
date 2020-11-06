@@ -1,0 +1,123 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="disp-flex">
+      <ion-buttons slot="start">
+        <ion-menu-button class="color-black"></ion-menu-button>
+      </ion-buttons>
+      <p class="black-24 fw-600">Ajustes del cliente</p>
+      <img src="/assets/images/logo-img.svg">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="register">
+  <div class="blue-head">
+    
+  </div>
+  <div class="floating-info">
+    <div>
+      <img class="p-t-20" src="/assets/images/logo.svg">
+      <p class="white-20 fw-800 p-t-10 p-b-10">Registrar Cliente</p>
+    </div>
+    <div class="floating-card p-b-20">
+      <div class="card-box">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <ion-item class="item-style">
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input formControlName="email" type="email"></ion-input>
+          </ion-item>
+          <ion-item class="item-style form-error" *ngIf="email.invalid && email.touched" lines="none">
+            <ion-text color="danger" class="form-error">
+              Ingresa un correo valido.
+            </ion-text>
+          </ion-item>
+
+          <ion-item class="item-style">
+            <ion-label position="floating">Nombre y apellido</ion-label>
+            <ion-input formControlName="fullName" type="text"></ion-input>
+          </ion-item>
+          <ion-item class="item-style form-error" *ngIf="fullName.invalid && fullName.touched" lines="none">
+            <ion-text color="danger" class="form-error">
+              Ingresa un nombre valido.
+            </ion-text>
+          </ion-item>
+
+          <ion-item class="item-style">
+            <ion-label position="floating">Teléfono</ion-label>
+            <ion-input formControlName="phone" matInput mask="(000) 000 0000" type="tel"></ion-input>
+          </ion-item>
+          <ion-item class="item-style form-error" *ngIf="phone.invalid && phone.touched" lines="none">
+            <ion-text color="danger" class="form-error">
+              Ingresa un teléfono valido.
+            </ion-text>
+          </ion-item>
+
+          <ion-item class="item-style">
+            <!-- <ion-label position="floating">Sexo</ion-label> -->
+            <ion-radio-group formControlName="genre">
+              <ion-list-header>
+                <ion-label>Sexo</ion-label>
+              </ion-list-header>
+          
+              <ion-item>
+                <ion-label>Mujer</ion-label>
+                <ion-radio slot="start" [value]="0"></ion-radio>
+              </ion-item>
+          
+              <ion-item>
+                <ion-label>Hombre</ion-label>
+                <ion-radio slot="start" [value]="1"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-item>
+          
+          <ion-item class="item-style">
+            <ion-label position="floating">Fecha de nacimiento</ion-label>
+            <ion-datetime formControlName="birthDay" value="1995-01-01" [max]="2021"
+                [dayShortNames]="['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom']"
+                displayFormat="DD MMM, YYYY"
+                monthShortNames="Ene, Feb, Mar, Abr, Mey, Jun, Jul, Aug, Sep, Oct, Nov, Dic"></ion-datetime>
+          </ion-item>
+          
+          <ion-item class="item-style">
+            <ion-label position="floating">Estatura</ion-label>
+            <ion-input formControlName="height" type="number"></ion-input>
+          </ion-item>
+          <ion-item class="item-style form-error" *ngIf="height.invalid && height.touched" lines="none">
+            <ion-text color="danger" class="form-error">
+              Ingresa estatura invalida.
+            </ion-text>
+          </ion-item>
+
+          <ion-item class="item-style">
+            <ion-label position="floating">Peso</ion-label>
+            <ion-input formControlName="weight" type="number"></ion-input>
+          </ion-item>
+          <ion-item class="item-style form-error" *ngIf="weight.invalid && weight.touched" lines="none">
+            <ion-text color="danger" class="form-error">
+              Ingresa peso invalido.
+            </ion-text>
+          </ion-item>
+
+          <ion-item class="item-style">
+            <ion-label position="floating">Dirección</ion-label>
+            <ion-textarea formControlName="direction"></ion-textarea>
+          </ion-item>
+          <ion-item class="item-style form-error" *ngIf="direction.invalid && direction.touched" lines="none">
+            <ion-text color="danger" class="form-error">
+              Ingrese una dirección valida.
+            </ion-text>
+          </ion-item>
+
+          <ion-button
+          class="blu-100-btn"
+            type="submit"
+            [disabled]="registerForm.invalid"
+          >
+            Guardar
+          </ion-button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
