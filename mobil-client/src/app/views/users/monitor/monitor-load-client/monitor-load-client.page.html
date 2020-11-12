@@ -1,9 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>monitor-load-client</ion-title>
+    <div class="disp-flex">
+      <ion-buttons slot="start">
+        <ion-menu-button class="color-black"></ion-menu-button>
+      </ion-buttons>
+      <p class="black-18 fw-600">Conectando con paciente</p>
+      <img src="/assets/images/heart.svg">
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row class="p-10-20">
+      <ion-label class="black-18">
+        Se ha introducido el código XS985. Aguarda un momento en lo que se establece la conexión
+      </ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-col class="disp-flex-jsc-alc">
+        <img src="/assets/images/b-heart.svg">
+      </ion-col>
+      <ion-col>
+        <p class="saving">
+          <span>.</span>
+          <span class="color-blu">.</span>
+          <span>.</span>
+          <span class="color-blu">.</span>
+        </p>
+      </ion-col>
+      <ion-col class="disp-flex-jsc-alc">
+        <img src="/assets/images/phone.svg">
+      </ion-col>
+      
+    </ion-row>
+    <ion-row  class="p-10-20">
+      <ion-button  class="grey-btn">Cancelar</ion-button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

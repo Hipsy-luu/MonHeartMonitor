@@ -1,29 +1,43 @@
-<ion-content>
-  <div class="blue-head">
-    
-  </div>
-  <div class="floating-info">
-    <div>
-      <img class="p-t-20" src="/assets/images/logo.svg">
-      <p class="white-20 fw-800 p-t-10 p-b-10">Inicia sesión</p>
+<ion-content >
+  <div class="background-dots">
+    <div class="black-head">    
     </div>
-    <div class="floating-card p-b-20">
-      <div class="card-box">
-        <ion-row>
-          <ion-button
-            class="blu-100-btn"
-            routerLink="/client-user-register" 
-          >
-          Paciente
-          </ion-button>
-          <ion-button
-            class="blu-100-btn"
-            routerLink="/monitor-user-register" 
-          >
-          Usuario Monitor
-          </ion-button>
-        </ion-row>
+    <div class="floating-info">
+      <div>
+        <img class="p-t-20 m-b-20" src="/assets/images/w-logo.svg">
+      </div>
+      <div class="floating-card p-b-20">
+        <div class="card-box">
+          <ion-grid>
+            <ion-row class="p-t-10">
+              <label class="white-20">Elige el tipo de usuario que eres.</label>
+            </ion-row>
+            <ion-row class="p-30-0">
+              <ion-button
+                class="blu-100-btn"
+                routerLink="/client-user-register" 
+              >
+              Paciente
+              </ion-button>
+            </ion-row>
+            <ion-row class="disp-flex-jcenter">
+              <label class="white-20">o</label>
+            </ion-row>
+            <ion-row class="p-30-0">
+              <ion-button
+                class="blu-100-btn"
+                routerLink="/monitor-user-register" 
+              >
+              Usuario Monitor
+              </ion-button>
+            </ion-row>
+            <ion-row class="disp-flex-jcenter">
+              <a class="white-underline-16" routerLink="/login">Ya tengo una cuenta</a>
+            </ion-row>
+          </ion-grid>
+        </div>
       </div>
     </div>
   </div>
+  
 </ion-content>

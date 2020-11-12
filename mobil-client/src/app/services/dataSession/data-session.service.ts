@@ -95,7 +95,9 @@ export class DataSessionService {
       errorCallBack(new LoggedResponse(true, 'Sin token'));
     } else {
       this.apiDataService.setToken(this.token);
-      // console.log(this.user);
+      //console.log("ussssss");
+      
+      //console.log(this.user);
 
       if (this.user.email == '') {
         this.apiDataService.getUserData(this.token).then((response: ServerMessage) => {
@@ -216,7 +218,7 @@ export class DataSessionService {
     this.user.patient = updatedData.patient;
     this.user.monitors = updatedData.monitors;
 
-    console.log(this.user);
+    //console.log(this.user);
   }
 
   navigateByUrl(url: string) {

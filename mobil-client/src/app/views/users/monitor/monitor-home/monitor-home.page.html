@@ -1,33 +1,141 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <div class="disp-flex">
+    <div class="disp-flex-jstart flex-wrap">
       <ion-buttons slot="start">
         <ion-menu-button class="color-black"></ion-menu-button>
       </ion-buttons>
-      <p class="black-24 fw-600">Home Test Monitor</p>
-      <img src="/assets/images/logo-img.svg">
+      <div class="disp-flex-jcenter w-70p">
+        <img src="/assets/images/b-logo.svg">
+      </div>
+      
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-label>
-    nombre paciente : {{actualPatient.fullName}}
-    peso : {{actualPatient.weight}}
-    estatura : {{actualPatient.height}}
-
-    Indice de masa corporal o IMC : 56
-    sexo : 
-    <span *ngIf="actualPatient.genre == 0">
-      mujer
-    </span>
-    <span *ngIf="actualPatient.genre == 1">
-      hombre
-    </span>
-
-    bpm : 52
-    edad :
-    {{utilitiesService.edad(actualPatient.birthDay)}}
-    
-  </ion-label>
+  <div class="general-card m-t-10">
+    <ion-grid>
+      <ion-row class="head-card">
+        <ion-label class="black-16 fw-600 ">Datos Generales del Paciente</ion-label>
+      </ion-row>
+      <ion-row class="p-t-5">
+        <ion-row>
+          <ion-label class="black-14">
+            Nombre del paciente : {{actualPatient.fullName}}
+          </ion-label>
+        </ion-row>
+      </ion-row>
+      <ion-row class="p-t-5 border-b p-b-10">
+        <ion-col>
+          <ion-row class="disp-flex-jcenter">
+            <ion-label class="blu-16 fw-600 ">
+              <span *ngIf="actualPatient.genre == 0">
+                Mujer
+              </span>
+              <span *ngIf="actualPatient.genre == 1">
+                Hombre
+              </span>
+            </ion-label>
+          </ion-row >
+          <ion-row class="disp-flex-jcenter">
+            <ion-label class="black-14  ">
+              Sexo
+            </ion-label>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row class="disp-flex-jcenter">
+            <ion-label class="blu-16 fw-600 ">
+              {{utilitiesService.edad(actualPatient.birthDay)}}
+            </ion-label>
+          </ion-row>
+          <ion-row class="disp-flex-jcenter">
+            <ion-label class="black-14 ">
+              Edad
+            </ion-label>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row class="p-t-5">
+        <ion-col>
+          <ion-row class="disp-flex-jcenter">
+            <ion-label class="blu-16 fw-600 ">
+              {{actualPatient.weight}}
+            </ion-label>
+          </ion-row>
+          <ion-row class="disp-flex-jcenter">
+            <ion-label class="black-14  ">
+              Peso
+            </ion-label>
+          </ion-row>
+      </ion-col>
+      <ion-col>
+        <ion-row class="disp-flex-jcenter">
+          <ion-label class="blu-16 fw-600 ">
+            {{actualPatient.height}}
+          </ion-label>
+        </ion-row>
+        <ion-row class="disp-flex-jcenter">
+          <ion-label class="black-14  ">
+            Estatura
+          </ion-label>
+        </ion-row>
+      </ion-col>
+      </ion-row>
+      <ion-row class="disp-block">
+        <div class="disp-flex-jcenter">
+          <ion-label class="blu-16 fw-600 ">
+            56
+          </ion-label>
+        </div>
+        <div class="disp-flex-jcenter">
+          <ion-label class="black-14 ">
+            Indice de masa corporal o IMC
+          </ion-label>
+        </div>
+      </ion-row>
+      
+    </ion-grid>
+  </div>
+  <div>
+    <ion-grid class="p-t-20">
+      <ion-row>
+        <ion-col>
+          <ion-row class="disp-flex-jcenter">
+            <div class="outer-heart">
+              <div class="heart-box">
+                <ion-icon class="pulsingheart" name="heart"></ion-icon>
+              </div>
+            </div>
+          </ion-row>
+        </ion-col>
+        <ion-col class="p-t-10">
+          <ion-row class="disp-flex-jstart">
+            <ion-label class="blu-16 fw-600 ">
+              52
+            </ion-label>
+          </ion-row>
+          <ion-row class="disp-flex-jstart">
+            <ion-label class="black-14 ">
+              BPM
+            </ion-label>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div>
+    <img src="/assets/images/fake-beat.svg">
+  </div>
+  <ion-grid class="p-t-20">
+    <ion-row class="p-0-15">
+      <ion-button class="blu-100-btn">
+        <ion-icon name="call-sharp" class="p-r-5"></ion-icon>
+        Llamar
+      </ion-button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

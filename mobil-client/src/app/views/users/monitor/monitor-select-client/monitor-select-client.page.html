@@ -7,54 +7,58 @@
           <ion-menu-button class="color-black"></ion-menu-button>
         </ion-buttons>
         <p class="black-24 fw-600">Código de paciente</p>
-        <img src="/assets/images/logo-img.svg">
+        <img src="/assets/images/heart.svg">
       </div>
     </ion-toolbar>
   </ion-header>
 </span>
 
 <ion-content id="register">
-  <div class="blue-head">
-
-  </div>
-  <div class="floating-info">
-    <div>
-      <img class="p-t-20" src="/assets/images/logo.svg">
-      <p class="white-20 fw-800 p-t-10 p-b-10">Registrar monitor</p>
-    </div>
-    <div class="floating-card p-b-20">
-      <div class="card-box">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <ion-item class="item-style">
-            <ion-label position="floating">CODIGO PACIENTE</ion-label>
-            <ion-label position="floating">EJEMPLO : 000000</ion-label>
-            <ion-input formControlName="code" type="text"></ion-input>
-          </ion-item>
-          <ion-item class="item-style form-error" *ngIf="code.invalid && code.touched" lines="none">
-            <ion-text color="danger" class="form-error">
-              El código debe de ser de 6 caracteres.
-            </ion-text>
-          </ion-item>
+  <ion-grid>
+    <ion-row class="p-10-20">
+      <ion-label class="black-18">
+        Introduce el código del paciente para establecer una conexión y comenzar a monitorear su estado.
+      </ion-label>
+    </ion-row>
+    <ion-row class="p-0-20">
+      <ion-label class="black-18">
+        Ejemplo: 000000
+      </ion-label>
+    </ion-row>
+    <ion-row class="p-10-20">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="w-100p">
+        <ion-item class="item-style">
+          <ion-label position="floating" class="black-16">Ingresa el código del paciente</ion-label>
+          <ion-input formControlName="code" type="text"></ion-input>
+        </ion-item>
+        <ion-item class="item-style form-error" *ngIf="code.invalid && code.touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            El código debe de ser de 6 caracteres.
+          </ion-text>
+        </ion-item>
+        <ion-row class="p-b-10">
           <ion-button class="blu-100-btn" type="submit" [disabled]="registerForm.invalid">
-            Guardar
+            Conectar
           </ion-button>
+        </ion-row>
+        
 
-          <span *ngIf="dataSessionService.user.patient != undefined && dataSessionService.user.patient != null ">
-            <ion-button (click)="dataSessionService.navigateByUrl('/monitor-home')" *ngIf="dataSessionService.user.patient.idUser != null && 
-              dataSessionService.user.patient.idUser != undefined " class="blu-100-btn">
-              Cancelar
-            </ion-button>
-          </span>
+        <span *ngIf="dataSessionService.user.patient != undefined && dataSessionService.user.patient != null ">
+          <ion-button (click)="dataSessionService.navigateByUrl('/monitor-home')" *ngIf="dataSessionService.user.patient.idUser != null && 
+            dataSessionService.user.patient.idUser != undefined " class="grey-btn">
+            Cancelar
+          </ion-button>
+        </span>
 
-          <span *ngIf="dataSessionService.user.patient == null || 
-            dataSessionService.user.patient == undefined ">
-            <ion-button (click)="dataSessionService.logOut()" class="blu-100-btn">
-              Cancelar <ion-icon name="log-out-outline"></ion-icon>
-            </ion-button>
-          </span>
+        <span *ngIf="dataSessionService.user.patient == null || 
+          dataSessionService.user.patient == undefined ">
+          <ion-button (click)="dataSessionService.logOut()" class="grey-btn">
+            Cancelar <ion-icon name="log-out-outline"></ion-icon>
+          </ion-button>
+        </span>
 
-        </form>
-      </div>
-    </div>
-  </div>
+      </form>
+    </ion-row>
+  </ion-grid>
+        
 </ion-content>

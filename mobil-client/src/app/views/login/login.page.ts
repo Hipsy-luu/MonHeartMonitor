@@ -22,6 +22,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.setupForm();
+    //this.dataSessionService.logOut();
     this.dataSessionService.checkLogin((loggedResponse: LoggedResponse) => {
       //console.log(loggedResponse);  
       if (this.dataSessionService.user.userType == 0 ) {

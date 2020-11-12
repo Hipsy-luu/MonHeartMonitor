@@ -1,0 +1,15 @@
+ion-item{
+    --inner-border-width: 0;
+    border-bottom: solid 1px lightgray;
+    padding: 10px 5px;
+}
+.back-btn{
+    --background: #FAFAFA;
+    background: #FAFAFA;
+    --background-activated:  #FAFAFA;
+    --background-focused:  #FAFAFA;
+    --background-hover:  #FAFAFA;
+    ion-icon{
+        color: #222831;
+    }
+}

@@ -24,21 +24,21 @@ export class AppComponent implements OnInit {
     {
       title: 'Cambiar Paciente',
       url: '/monitor-select-client',
-      icon: 'home',
+      icon: 'medkit',
       type : 0
     },
     {
       title: 'Ajustes',
       url: '/monitor-user-settings',
-      icon: 'home',
+      icon: 'settings',
       type : 0
-    },
+    },/*
     {
       title: 'Nosotros',
       url: '/us',
       icon: 'people-circle',
       type : 0
-    },
+    },*/
     //menu liente
     {
       title: 'Home',
@@ -49,21 +49,21 @@ export class AppComponent implements OnInit {
     {
       title: 'Monitores',
       url: '/client-monitors-list',
-      icon: 'home',
+      icon: 'people',
       type : 1
     },
     {
       title: 'Ajustes',
       url: '/client-user-settings',
-      icon: 'home',
+      icon: 'settings',
       type : 1
-    },
+    },/*
     {
       title: 'Nosotros',
       url: '/us',
       icon: 'people-circle',
       type : 1
-    },
+    },*/
   ];
   //public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   slideOpts = {
