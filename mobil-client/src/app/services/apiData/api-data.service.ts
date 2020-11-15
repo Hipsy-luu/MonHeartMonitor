@@ -12,7 +12,8 @@ import { User } from '../../classes/user.class';
 })
 export class ApiDataService {
   // Cambiar cada que se ponga en produccion o en algun otro server 
-  baseURL: string = deployConf.apiUrl;
+  //baseURL: string = deployConf.apiUrl;
+  baseURL: string = deployConf.apiLocalUrl;
   token: string;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }

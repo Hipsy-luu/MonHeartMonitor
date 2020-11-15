@@ -28,10 +28,6 @@ const routes: Routes = [
     loadChildren: () => import('./views/contact/contact.module').then( m => m.ContactPageModule)
   },
   {
-    path: 'home-test',
-    loadChildren: () => import('./views/home-test/home-test.module').then( m => m.HomeTestPageModule)
-  },
-  {
     path: 'selection-type-user',
     loadChildren: () => import('./views/users/selection-type-user/selection-type-user.module').then( m => m.SelectionTypeUserPageModule)
   },
@@ -43,10 +39,6 @@ const routes: Routes = [
   {
     path: 'monitor-select-client',
     loadChildren: () => import('./views/users/monitor/monitor-select-client/monitor-select-client.module').then( m => m.MonitorSelectClientPageModule)
-  },
-  {
-    path: 'monitor-load-client',
-    loadChildren: () => import('./views/users/monitor/monitor-load-client/monitor-load-client.module').then( m => m.MonitorLoadClientPageModule)
   },
   {
     path: 'monitor-home',
@@ -72,6 +64,10 @@ const routes: Routes = [
   {
     path: 'monitor-user-settings',
     loadChildren: () => import('./views/users/monitor/monitor-user-settings/monitor-user-settings.module').then( m => m.MonitorUserSettingsPageModule)
+  },
+  {
+    path: 'alerts',
+    loadChildren: () => import('./components/modals/alerts/alerts.module').then( m => m.AlertsPageModule)
   },
 
 ];

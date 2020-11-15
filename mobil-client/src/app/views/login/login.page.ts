@@ -57,11 +57,11 @@ export class LoginPage implements OnInit {
     this.dataSessionService.loginUser(this.email.value , this.password.value).then((response: ServerMessage) => {
       //this.setupForm();
       //console.log(response);
-      //console.log(this.dataSessionService.user);
+      console.log(this.dataSessionService.user);
       this.dataSessionService.setUserData(response.data.user);
       if (response.data.user.userType == 0 ) {
         //Cosas para hacer en caso de que el usuario este actualmente logeado
-        
+        console.log(this.dataSessionService.user);
         if(response.data.user.patient == null || response.data.user.patient == undefined){
           this.dataSessionService.navigateByUrl("/monitor-select-client");
         }else{

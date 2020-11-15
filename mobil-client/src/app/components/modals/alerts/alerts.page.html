@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>alerts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  Alerta Personal
+
+  {{alertData.message}}
+
+  <ion-button href="tel:{{dataSessionService.user.patient.phone}}" class="blu-100-btn">
+    <ion-icon name="call-sharp" class="p-r-5"></ion-icon>
+    Llamar
+  </ion-button>
+  <ion-button (click)="dismiss()">
+    Cerrar
+  </ion-button>
+</ion-content>

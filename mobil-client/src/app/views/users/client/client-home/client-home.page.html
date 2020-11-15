@@ -13,44 +13,87 @@
 </ion-header>
 
 <ion-content>
-  <div class="general-card m-t-10">
-    <ion-grid>
-      <ion-row class="head-card">
-        <ion-label class="black-16 fw-600 ">Datos Generales</ion-label>
+
+  <!-- bluetooth cosas ------------------------------- -->
+  <ion-row *ngIf="!bluetoothSerialService.listToggle && !bluetoothSerialService.disconectToggle">
+    <ion-button style=""
+      class="" (click)="bluetoothSerialService.initBlu()">
+      <ion-icon name="refresh"></ion-icon>&nbsp;Conectar Bluetooth
+    </ion-button>
+  </ion-row>
+  <!-- lista de dispositivos para vincular -->
+  <ion-row *ngIf="bluetoothSerialService.listToggle">
+    <ion-col>
+      <!-- boton para refrescar los dispositivos disponibles -->
+      <ion-row>
+        <ion-button style="" class="" (click)="bluetoothSerialService.listPairedDevices()">
+          <ion-icon name="refresh"></ion-icon>&nbsp;Recargar dispositivos Bluetooth
+        </ion-button>
       </ion-row>
-      <ion-row class="p-t-5 border-b p-b-10">
-        <ion-col>
-          <ion-row class="disp-flex-jcenter">
-            <ion-label class="blu-16 fw-600 ">
-              <span *ngIf="actualPatient.genre == 0">
-                Mujer
-              </span>
-              <span *ngIf="actualPatient.genre == 1">
-                Hombre
-              </span>
-            </ion-label>
-          </ion-row >
-          <ion-row class="disp-flex-jcenter">
-            <ion-label class="black-14  ">
-              Sexo
-            </ion-label>
-          </ion-row>
-        </ion-col>
-        <ion-col>
-          <ion-row class="disp-flex-jcenter">
-            <ion-label class="blu-16 fw-600 ">
-              {{utilitiesService.edad(actualPatient.birthDay)}}
-            </ion-label>
-          </ion-row>
-          <ion-row class="disp-flex-jcenter">
-            <ion-label class="black-14 ">
-              Edad
-            </ion-label>
-          </ion-row>
-        </ion-col>
+      <ion-row style="width: 100%;">
+        <ion-list style="width: 100%;">
+          <ion-radio-group style="width: 100%;" [(ngModel)]="bluetoothSerialService.pairedDeviceID">
+            <ion-list-header>
+              Dispositivos Disponibles
+            </ion-list-header>
+            <ion-item *ngFor="let i of bluetoothSerialService.pairedList;let j=index">
+              <ion-label>{{i.name}}</ion-label>
+              <ion-radio value="{{j}}"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
       </ion-row>
-      <ion-row class="p-t-5">
-        <ion-col>
+      <!-- Muestra un boton cuando se selecciono un item de la lista de dispositivos disponibles -->
+      <ion-row *ngIf="bluetoothSerialService.pairedDeviceID">
+        <ion-button style="width: -webkit-fill-available;height: 40px;border: 1px black;border-radius: 8px;" full
+          class="submit-button" (click)="selectAndConnect()">
+          <ion-icon name="bluetooth"></ion-icon>&nbsp;Conectar Dispositivo
+        </ion-button>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <!-- bluetooth cosas ------------------------------- -->
+
+  <div  >
+    <div *ngIf="bluetoothSerialService.disconectToggle" class="general-card m-t-10">
+      <ion-grid>
+        <ion-row class="head-card">
+          <ion-label class="black-16 fw-600 ">Datos Generales</ion-label>
+        </ion-row>
+        <ion-row class="p-t-5 border-b p-b-10">
+          <ion-col>
+            <ion-row class="disp-flex-jcenter">
+              <ion-label class="blu-16 fw-600 ">
+                <span *ngIf="actualPatient.genre == 0">
+                  Mujer
+                </span>
+                <span *ngIf="actualPatient.genre == 1">
+                  Hombre
+                </span>
+              </ion-label>
+            </ion-row>
+            <ion-row class="disp-flex-jcenter">
+              <ion-label class="black-14  ">
+                Sexo
+              </ion-label>
+            </ion-row>
+          </ion-col>
+          <ion-col>
+            <ion-row class="disp-flex-jcenter">
+              <ion-label class="blu-16 fw-600 ">
+                {{utilitiesService.edad(actualPatient.birthDay)}}
+              </ion-label>
+            </ion-row>
+            <ion-row class="disp-flex-jcenter">
+              <ion-label class="black-14 ">
+                Edad
+              </ion-label>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="p-t-5">
+          <ion-col>
             <ion-row class="disp-flex-jcenter">
               <ion-label class="blu-16 fw-600 ">
                 {{actualPatient.weight}}
@@ -61,75 +104,119 @@
                 Peso
               </ion-label>
             </ion-row>
-        </ion-col>
-        <ion-col>
-          <ion-row class="disp-flex-jcenter">
+          </ion-col>
+          <ion-col>
+            <ion-row class="disp-flex-jcenter">
+              <ion-label class="blu-16 fw-600 ">
+                {{actualPatient.height}}
+              </ion-label>
+            </ion-row>
+            <ion-row class="disp-flex-jcenter">
+              <ion-label class="black-14  ">
+                Estatura
+              </ion-label>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="disp-block">
+          <div class="disp-flex-jcenter">
             <ion-label class="blu-16 fw-600 ">
-              {{actualPatient.height}}
+              56
             </ion-label>
-          </ion-row>
-          <ion-row class="disp-flex-jcenter">
-            <ion-label class="black-14  ">
-              Estatura
-            </ion-label>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-      <ion-row class="disp-block">
-        <div class="disp-flex-jcenter">
-          <ion-label class="blu-16 fw-600 ">
-            56
-          </ion-label>
-        </div>
-        <div class="disp-flex-jcenter">
-          <ion-label class="black-14 ">
-            Indice de masa corporal o IMC
-          </ion-label>
-        </div>
-      </ion-row>
-      <hr>
-      
-    </ion-grid>
-  </div>
-  <div>
-    <ion-grid class="p-t-20">
-      <ion-row>
-        <ion-col>
-          <ion-row class="disp-flex-jcenter">
-            <div class="outer-heart">
-              <div class="heart-box">
-                <ion-icon class="pulsingheart" name="heart"></ion-icon>
-              </div>
-            </div>
-          </ion-row>
-        </ion-col>
-        <ion-col class="p-t-10">
-          <ion-row class="disp-flex-jstart">
-            <ion-label class="blu-16 fw-600 ">
-              52
-            </ion-label>
-          </ion-row>
-          <ion-row class="disp-flex-jstart">
+          </div>
+          <div class="disp-flex-jcenter">
             <ion-label class="black-14 ">
-              BPM
+              Indice de masa corporal o IMC
             </ion-label>
-          </ion-row>
-        </ion-col>
-        <ion-col>
-          
-        </ion-col>
+          </div>
+        </ion-row>
+        <hr>
+
+      </ion-grid>
+    </div>
+    <div *ngIf="bluetoothSerialService.disconectToggle">
+      <ion-grid class="p-t-20">
+        <ion-row>
+          <ion-col>
+            <ion-row class="disp-flex-jcenter">
+              <div class="outer-heart">
+                <div class="heart-box">
+                  <ion-icon class="pulsingheart" name="heart"></ion-icon>
+                </div>
+              </div>
+            </ion-row>
+          </ion-col>
+          <ion-col class="p-t-10">
+            <ion-row class="disp-flex-jstart">
+              <ion-label class="blu-16 fw-600 ">
+                {{bpmdata}}
+              </ion-label>
+            </ion-row>
+            <ion-row class="disp-flex-jstart">
+              <ion-label class="black-14 ">
+                BPM
+              </ion-label>
+            </ion-row>
+          </ion-col>
+          <ion-col class="p-t-10">
+            <ion-row class="disp-flex-jstart">
+              <ion-label class="blu-16 fw-600 ">
+                {{oxigendata}}
+              </ion-label>
+            </ion-row>
+            <ion-row class="disp-flex-jstart">
+              <ion-label class="black-14 ">
+                Saturación Oxigeno
+              </ion-label>
+            </ion-row>
+          </ion-col>
+          <ion-col>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-row class="disp-flex-jcenter">
+              <ion-label class="black-14 ">
+                Respiración : {{airFlow}}
+              </ion-label>
+            </ion-row>
+            <ion-row class="disp-flex-jcenter">
+              <ion-progress-bar color="primary" [value]="airFlowPercent*0.01"></ion-progress-bar>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div>
+      <!-- <img src="/assets/images/fake-beat.svg"> -->
+      <canvas [style]="bluetoothSerialService.disconectToggle ? '' : 'display: none;'" #lineCanvas></canvas>
+    </div>
+    <ion-grid *ngIf="bluetoothSerialService.disconectToggle" class="p-t-20">
+      <ion-row class="p-0-15">
+        <ion-button (click)="sendManualAlert()" class="blu-100-btn">
+          <ion-icon name="alert-circle-sharp" class="p-r-5"></ion-icon>
+          Enviar Alerta
+        </ion-button>
       </ion-row>
     </ion-grid>
-  </div>
-  <div>
-    <img src="/assets/images/fake-beat.svg">
-  </div>
-  <ion-grid class="p-t-20">
-    <ion-row class="p-0-15">
-      <ion-button class="blu-100-btn">
-        <ion-icon name="alert-circle-sharp" class="p-r-5"></ion-icon>
-        Enviar Alerta
-      </ion-button>
+
+    <!-- Se desactiva la coneccion -->
+    <ion-row *ngIf="bluetoothSerialService.disconectToggle">
+      <ion-card style="width: 100%;background-color: lightgreen;">
+        <ion-card-content>
+          <ion-list style="width: -webkit-fill-available;">
+            <ion-item>
+              <ion-label floating>Dispositivo Conectado</ion-label>
+            </ion-item>
+            <button style="width: -webkit-fill-available;height: 26px;border: 1px black;border-radius: 8px;" ion-button
+              full class="submit-button" (click)="disconnectBT();">
+              <ion-icon name="send"></ion-icon>&nbsp;Desconectar
+            </button>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
     </ion-row>
-  </ion-grid>
+  </div>
+
+
 </ion-content>

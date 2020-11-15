@@ -14,7 +14,7 @@ export class User {
     description: string;
 
     //user monitor
-    patient: User;
+    patient: any/* User */;
 
     //user paciente
     active: boolean;
@@ -41,6 +41,8 @@ export class User {
 
         //user monitor
         //this.patient = new User();
+        this.patient = {}
+        this.patient.phone = "";
 
         //user paciente
         this.active = false;

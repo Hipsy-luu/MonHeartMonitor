@@ -1,3 +1,4 @@
+import { UtilitiesService } from './services/utilities/utilities.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Platform, MenuController } from '@ionic/angular';
@@ -81,6 +82,7 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public dataSessionService: DataSessionService,
+    public utilitiesService : UtilitiesService,
     private menu: MenuController
   ) {
     this.initializeApp();

@@ -16,7 +16,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { deployConf } from './utils/config';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: deployConf.apiUrl, options: {}};
+const config: SocketIoConfig = { url: deployConf.apiLocalUrl/* deployConf.apiUrl */, options: {}};
+
+//Libreria para el bluetooth
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
 
 @NgModule({
   declarations: [AppComponent,],
@@ -33,6 +37,8 @@ const config: SocketIoConfig = { url: deployConf.apiUrl, options: {}};
   providers: [
     StatusBar,
     SplashScreen,
+    BluetoothSerial,
+    OpenNativeSettings,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@
                   <p class="black-18 fw-800">Mi cuenta</p>
                   <p class="black-16">{{dataSessionService.user.fullName}}</p>
                   <p class="black-14">{{dataSessionService.user.email}}</p>
-                  <p class="black-14 fw-600">Código : {{dataSessionService.user.idUser}}</p>
+                  <p class="black-14 fw-600">Código : {{ utilitiesService.fixCode(dataSessionService.user.idUser) }}</p>
                 </div>
           </ion-row>
         </ion-grid>

@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "cliente-movil",
+  "appId": "com.hciia.Monheart",
+  "appName": "egc-monitor-hci-ia",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

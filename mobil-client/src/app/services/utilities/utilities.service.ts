@@ -1,12 +1,14 @@
+import { AlertData } from './../../classes/alertData.class';
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController ,ModalController } from '@ionic/angular';
+import { AlertsPage } from '../../components/modals/alerts/alerts.page';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilitiesService {
 
-  constructor(public toastController: ToastController,) { }
+  constructor(public toastController: ToastController,public modalController: ModalController) { }
 
   //TOAST
   async presentToast(message : string,time : number) {
@@ -60,4 +62,34 @@ export class UtilitiesService {
     let months = (years * 12) + (date2.getMonth() - date1.getMonth());
     return Math.trunc(months / 12) ;
   }
+
+  fixCode(code : number){
+    let valFixed = code.toString();
+    if(valFixed.length == 1){
+      return "00000"+valFixed;
+    }else if(valFixed.length == 2){
+      return "0000"+valFixed;
+    }else if(valFixed.length == 3){
+      return "000"+valFixed;
+    }else if(valFixed.length == 4){
+      return "00"+valFixed;
+    }else if(valFixed.length == 5){
+      return "0"+valFixed;
+    }else if(valFixed.length == 6){
+      return ""+valFixed;
+    }
+  }
+
+
+  async presentModalAlert(alertData : AlertData) {
+    const modal = await this.modalController.create({
+      component: AlertsPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        'alertData': alertData
+      }
+    });
+    return await modal.present();
+  }
+
 }
