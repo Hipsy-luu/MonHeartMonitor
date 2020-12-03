@@ -202,16 +202,15 @@
 
     <!-- Se desactiva la coneccion -->
     <ion-row *ngIf="bluetoothSerialService.disconectToggle">
-      <ion-card style="width: 100%;background-color: lightgreen;">
+      <ion-card style="width: 100%;">
         <ion-card-content>
           <ion-list style="width: -webkit-fill-available;">
-            <ion-item>
+            <!-- <ion-item>
               <ion-label floating>Dispositivo Conectado</ion-label>
-            </ion-item>
-            <button style="width: -webkit-fill-available;height: 26px;border: 1px black;border-radius: 8px;" ion-button
-              full class="submit-button" (click)="disconnectBT();">
+            </ion-item> -->
+            <ion-button full class="black-btn" (click)="disconnectBT();">
               <ion-icon name="send"></ion-icon>&nbsp;Desconectar
-            </button>
+            </ion-button>
           </ion-list>
         </ion-card-content>
       </ion-card>

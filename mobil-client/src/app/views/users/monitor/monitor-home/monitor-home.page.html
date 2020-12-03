@@ -23,8 +23,8 @@
   <div *ngIf="apiLiveDataService.patientConnected == false">
     <ion-grid>
       <ion-row class="p-10-20">
-        <ion-label class="black-18">
-          Se ha introducido el código XS985. Aguarda un momento en lo que se establece la conexión
+        <ion-label class="black-18" *ngIf="dataSessionService.user.patient.idUser != undefined && dataSessionService.user.patient.idUser != null">
+          Se ha introducido el código {{utilitiesService.fixCode(dataSessionService.user.patient.idUser)}}. Aguarda un momento en lo que se establece la conexión
         </ion-label>
       </ion-row>
       <ion-row>
