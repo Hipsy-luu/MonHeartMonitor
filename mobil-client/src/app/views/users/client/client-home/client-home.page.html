@@ -17,7 +17,7 @@
   <!-- bluetooth cosas ------------------------------- -->
   <ion-row *ngIf="!bluetoothSerialService.listToggle && !bluetoothSerialService.disconectToggle">
     <ion-button style=""
-      class="" (click)="bluetoothSerialService.initBlu()">
+      class="blu-100-btn" (click)="bluetoothSerialService.initBlu()">
       <ion-icon name="refresh"></ion-icon>&nbsp;Conectar Bluetooth
     </ion-button>
   </ion-row>
@@ -26,7 +26,7 @@
     <ion-col>
       <!-- boton para refrescar los dispositivos disponibles -->
       <ion-row>
-        <ion-button style="" class="" (click)="bluetoothSerialService.listPairedDevices()">
+        <ion-button style="" class="blu-100-btn" (click)="bluetoothSerialService.listPairedDevices()">
           <ion-icon name="refresh"></ion-icon>&nbsp;Recargar dispositivos Bluetooth
         </ion-button>
       </ion-row>
@@ -46,7 +46,7 @@
       <!-- Muestra un boton cuando se selecciono un item de la lista de dispositivos disponibles -->
       <ion-row *ngIf="bluetoothSerialService.pairedDeviceID">
         <ion-button style="width: -webkit-fill-available;height: 40px;border: 1px black;border-radius: 8px;" full
-          class="submit-button" (click)="selectAndConnect()">
+          class="submit-button blu-100-btn" (click)="selectAndConnect()">
           <ion-icon name="bluetooth"></ion-icon>&nbsp;Conectar Dispositivo
         </ion-button>
       </ion-row>
