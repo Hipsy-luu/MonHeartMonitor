@@ -42,7 +42,7 @@ export class AuthService {
     let userToAttempt: User = await this.userRepository.findOne<User>({
       /* attributes: { exclude: ['password','deleted'] }, */
       where: { email: loginAttempt.email, deleted: false },
-      /* include: [{
+      /*include: [{
         model: Patient,
         as : "monitors"
       },{
@@ -50,7 +50,7 @@ export class AuthService {
         as : "patient"
       }], */
     });
-
+    //ds
     return new Promise(async (resolve, reject) => {
       let response: any;
       if (userToAttempt == null) {
@@ -64,7 +64,7 @@ export class AuthService {
           userToAttempt.patient = await this.patientRepository.findOne<Patient>({
             where: {
               idMonitor: userToAttempt.idUser,
-              /* idUserPatient : idPatient */
+              // idUserPatient : idPatient 
             },
           });
           // If there is a successful match, generate a JWT for the user
@@ -77,17 +77,17 @@ export class AuthService {
           let patient = await this.patientRepository.findOne<Patient>({
             where: {
               idMonitor: userToAttempt.idUser,
-              /* idUserPatient : idPatient */
+              // idUserPatient : idPatient 
             },
             include: [{
               model: User,
-              as: "patient"
+              as: "patientData"
             }],
           });
 
-          let monitors: Patient[] = await this.patientRepository.findAll<Patient>({
+         let monitors: Patient[] = await this.patientRepository.findAll<Patient>({
             where: {
-              /* idMonitor: userToAttempt.idUser, */
+              // idMonitor: userToAttempt.idUser, 
               idUserPatient: userToAttempt.idUser
             },
             include: [{
@@ -101,7 +101,7 @@ export class AuthService {
                 fullName: monitor.monitor.fullName,
                 email: monitor.monitor.email,
                 phone: monitor.monitor.phone,
-                /* password:  monitor.monitor.password, */
+                // password:  monitor.monitor.password, 
                 userType: monitor.monitor.userType,
                 createDate: monitor.monitor.createDate,
                 lastLogin: monitor.monitor.lastLogin,
@@ -136,7 +136,7 @@ export class AuthService {
             weight: userToAttempt.weight,
             height: userToAttempt.height,
 
-            patient: patient != null ? patient.patient : null,
+            patient: patient != null ? patient.patientData : null,
             monitors: monitors
           };;
           //Save the last login
@@ -177,7 +177,7 @@ export class AuthService {
         as : "patient",
         include: [{
           model: User,
-          as: "patient"
+          as: "patientData"
         }],
       }],
     });
@@ -195,7 +195,7 @@ export class AuthService {
         },
         include: [{
           model: User,
-          as: "patient"
+          as: "patientData"
         }],
       });
 
@@ -247,7 +247,7 @@ export class AuthService {
         weight: userToAttempt.weight,
         height: userToAttempt.height,
 
-        patient: patient != null ? patient.patient : null,
+        patient: patient != null ? patient.patientData : null,
         monitors: monitors
       };
     } else {

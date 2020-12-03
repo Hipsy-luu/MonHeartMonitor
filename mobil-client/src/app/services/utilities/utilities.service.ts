@@ -84,7 +84,7 @@ export class UtilitiesService {
   async presentModalAlert(alertData : AlertData) {
     const modal = await this.modalController.create({
       component: AlertsPage,
-      cssClass: 'my-custom-class',
+      cssClass: 'modal-alert',
       componentProps: {
         'alertData': alertData
       }

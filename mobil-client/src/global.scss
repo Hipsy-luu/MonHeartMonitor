@@ -132,6 +132,20 @@ ion-content {
   height: auto;
 }
 /*end background-styles*/
+/*MODAL*/
+.modal-alert{
+  .modal-wrapper.sc-ion-modal-ios{
+    height: 70%;
+  }
+  ion-content.ios.overscroll.hydrated{
+    --padding-top: 30px;
+    --padding-bottom: 10px;
+    --padding-start: 30px;
+    --padding-end: 30px;
+    height: 80%;
+  }
+}
+/*END MODAL*/
 /*Form-style*/
 .floating-card {
   width: 100%;
@@ -533,7 +547,7 @@ ion-modal#ion-overlay-1 .modal-wrapper.sc-ion-modal-md {
   font-size: 24px;
 }
 .black-20 {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Noto Sans", sans-serif !important;
   color: #000000;
   font-size: 20px;
 }

@@ -64,7 +64,8 @@ export class Patient extends Model<Patient> {
   @BelongsTo(() => User, 'idMonitor')
   monitor: User;
 
+  //#I - No se debe de usar alias iguales en diferentes modeleos 
   @BelongsTo(() => User, 'idUserPatient')
-  patient: User;
+  patientData: User;
 
 }

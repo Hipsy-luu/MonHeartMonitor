@@ -1,0 +1,27 @@
+ion-grid{
+    width: 100%;
+    height: 100%;
+    padding: 10% 15px 20% 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+img{
+    max-width: 100px;
+    width: 100%;
+}
+.row-c{
+    align-self: center;
+}
+.row-end{
+    align-self: flex-end;
+}
+@media screen and(max-width: 360px){
+    ion-grid{
+        padding: 2% 15px 20% 15px;
+    }
+    img{
+        max-width: 50px;
+        width: 100%;
+    }
+}

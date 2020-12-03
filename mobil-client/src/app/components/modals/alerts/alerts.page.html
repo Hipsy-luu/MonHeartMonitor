@@ -1,19 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>alerts</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  Alerta Personal
-
-  {{alertData.message}}
-
-  <ion-button href="tel:{{dataSessionService.user.patient.phone}}" class="blu-100-btn">
-    <ion-icon name="call-sharp" class="p-r-5"></ion-icon>
-    Llamar
-  </ion-button>
-  <ion-button (click)="dismiss()">
-    Cerrar
-  </ion-button>
+  <ion-grid class="modal-grid">
+    <ion-row class="row-c">
+      <div class="w-100p">
+        <div class="disp-flex-jsc-alc">
+          <img src="/assets/images/blu-alert.svg">
+        </div>
+        <div class="disp-flex-jsc-alc">
+          <ion-label class="black-20 fw-600">Alerta Personal</ion-label>
+        </div>
+      </div>
+    </ion-row>
+    <ion-row class="p-t-10 row-c">
+      <ion-label class="black-18">{{alertData.message}}</ion-label>
+      <ion-row>
+        <ion-label class="black-18">Favor de realizar alguna acción:</ion-label>
+      </ion-row>
+    </ion-row>
+    
+    <ion-row class="p-t-20 row-end w-100p">
+      <ion-button href="tel:{{dataSessionService.user.patient.phone}}" class="blu-100-btn">
+        <ion-icon name="call-sharp" class="p-r-5"></ion-icon>
+        Llamar
+      </ion-button>
+      <ion-row class="w-100p">
+        <ion-button (click)="dismiss()" class="grey-btn">
+          Cerrar
+        </ion-button>
+      </ion-row>
+    </ion-row>
+  </ion-grid>
 </ion-content>
